@@ -3,10 +3,7 @@ package com.example.xwork.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import com.example.xwork.entity.Product;
 import com.example.xwork.entity.Purchase;
 import com.example.xwork.repository.PurchaseRepository;
@@ -38,11 +35,8 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
     
     @Override
-    public Purchase getPurchase(Long id) {
-        if (purchaseRepository.findById(id).isPresent()) {
-            return purchaseRepository.findById(id).get();
-        }
-        throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Bad request");
+    public List<Purchase> findPurchaseByPurchase(Long purchaseId) {
+        return purchaseRepository.filterByPurchaseId(purchaseId);
     }
 
     @Override
