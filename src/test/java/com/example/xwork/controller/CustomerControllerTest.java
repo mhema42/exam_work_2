@@ -39,9 +39,9 @@ public class CustomerControllerTest {
     @BeforeEach
     void setup() {
         this.customerList = new ArrayList<>();
-        this.customerList.add(new Customer(1L, "Mats", "Kaxås", "mats@user.nu" ));
-        this.customerList.add(new Customer(1L, "Pelle", "Göteborg", "pelle@user.nu" ));
-        this.customerList.add(new Customer(1L, "Karin", "Stockholm", "karin@user.nu" ));
+        this.customerList.add(new Customer(1L, "Mats", "Kaxås", "011-123456", "mats@user.nu" ));
+        this.customerList.add(new Customer(2L, "Pelle", "Göteborg", "022-654321", "pelle@user.nu" ));
+        this.customerList.add(new Customer(3L, "Karin", "Stockholm", "033-987654", "karin@user.nu" ));
     }
 
     @Test

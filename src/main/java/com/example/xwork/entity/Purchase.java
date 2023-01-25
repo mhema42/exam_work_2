@@ -12,8 +12,8 @@ public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private long id;
-    long purchaseId;
+    private Long id;
+    Long purchaseId;
     int quantity;
 
     @OneToOne
@@ -22,26 +22,26 @@ public class Purchase {
     public Purchase() {
     }
     
-    public Purchase(Long id, long purchaseId, long productId, int quantity, Product product) {
+    public Purchase(Long id, Long purchaseId, Long productId, int quantity, Product product) {
         this.id = id;
         this.purchaseId = purchaseId;
         this.quantity = quantity;
         this.product = product;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getPurchaseId() {
+    public Long getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(long purchaseId) {
+    public void setPurchaseId(Long purchaseId) {
         this.purchaseId = purchaseId;
     }
 

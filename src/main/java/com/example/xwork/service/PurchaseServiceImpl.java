@@ -29,7 +29,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Override
-    public Purchase createPurchase(Purchase purchase, long purchaseId, long productId, int quantity) {
+    public Purchase createPurchase(Purchase purchase, Long purchaseId, Long productId, int quantity) {
         Product product = productService.getProduct(productId);
         purchase.setPurchaseId(purchaseId);
         purchase.setProduct(product);

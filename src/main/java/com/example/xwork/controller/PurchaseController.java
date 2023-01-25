@@ -22,7 +22,7 @@ public class PurchaseController {
     PurchaseService purchaseService;
 
     @PostMapping("/purchase")
-    public ResponseEntity<Purchase> savePurchase(@RequestBody Purchase purchase, @RequestParam("purchaseId") long purchaseId, @RequestParam("productId") long productId, @RequestParam("quantity") int quantity) {
+    public ResponseEntity<Purchase> savePurchase(@RequestBody Purchase purchase, @RequestParam("purchaseId") Long purchaseId, @RequestParam("productId") Long productId, @RequestParam("quantity") int quantity) {
         return new ResponseEntity<>(purchaseService.createPurchase(purchase, purchaseId, productId, quantity), HttpStatus.CREATED);
     }
     
