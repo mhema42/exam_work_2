@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,13 +21,23 @@ public class PurchaseController {
     PurchaseService purchaseService;
 
     @PostMapping("/purchase")
-    public ResponseEntity<Purchase> savePurchase(@RequestBody Purchase purchase, @RequestParam("purchaseId") Long purchaseId, @RequestParam("productId") Long productId, @RequestParam("quantity") int quantity) {
-        return new ResponseEntity<>(purchaseService.createPurchase(purchase, purchaseId, productId, quantity), HttpStatus.CREATED);
+    public ResponseEntity<Purchase> savePurchase(
+        @RequestBody Purchase purchase, 
+        @RequestParam("purchaseId") Long purchaseId, 
+        @RequestParam("productId") Long productId, 
+        @RequestParam("quantity") int quantity
+        ) {
+        return new ResponseEntity<>(purchaseService.createPurchase(
+            purchase, 
+            purchaseId, 
+            productId, 
+            quantity
+            ), HttpStatus.CREATED);
     }
     
-    @GetMapping("/purchase/{id}")
-    public ResponseEntity<Purchase> getPurchase(@PathVariable Long id) {
-        return new ResponseEntity<>(purchaseService.getPurchase(id), HttpStatus.OK);
+    @GetMapping("/purchase/id")
+    public ResponseEntity<List<Purchase>> getPurchaseByPurchaseId(@RequestParam(required = true) Long purchaseId) {
+        return new ResponseEntity<>(purchaseService.findPurchaseByPurchase(purchaseId), HttpStatus.OK);
     }
 
     @GetMapping("/purchase")
