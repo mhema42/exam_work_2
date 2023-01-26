@@ -1,4 +1,5 @@
 import { React, useState } from 'react'
+import "../css/startPage.css";
 
 export default function NewProduct() {
     const [name, setName] = useState('');
@@ -24,7 +25,7 @@ export default function NewProduct() {
     }
 
     return (
-        <div className='newProduct'>
+        <div className='Page-container'>
             <form onSubmit={handleSubmit}>
                 <input
                     className='name'
