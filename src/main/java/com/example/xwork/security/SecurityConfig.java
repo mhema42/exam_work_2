@@ -27,8 +27,8 @@ public class SecurityConfig {
             .csrf().disable()
             .httpBasic().disable()
             .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.GET, "/product/**").permitAll()
-            .requestMatchers(HttpMethod.POST, "/product/**").permitAll()
+            .requestMatchers(HttpMethod.GET, "/**").permitAll()
+            .requestMatchers(HttpMethod.POST, "/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
