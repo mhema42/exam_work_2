@@ -13,6 +13,6 @@ public interface PurchaseRepository extends CrudRepository<Purchase, Long> {
     @Query("""
         SELECT p FROM Purchase p WHERE p.purchaseId = :purchaseId  
     """)
-    List<Purchase> filterByPurchaseId(@Param("purchaseId") Long purchaseId);
+    List<Purchase> filterByPurchaseId(@Param("purchaseId") String purchaseId);
 
 }

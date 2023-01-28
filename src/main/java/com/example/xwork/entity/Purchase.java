@@ -13,7 +13,7 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
-    Long purchaseId;
+    String purchaseId;
     int quantity;
 
     @OneToOne
@@ -22,7 +22,7 @@ public class Purchase {
     public Purchase() {
     }
     
-    public Purchase(Long id, Long purchaseId, Long productId, int quantity, Product product) {
+    public Purchase(Long id, String purchaseId, Long productId, int quantity, Product product) {
         this.id = id;
         this.purchaseId = purchaseId;
         this.quantity = quantity;
@@ -37,11 +37,11 @@ public class Purchase {
         this.id = id;
     }
 
-    public Long getPurchaseId() {
+    public String getPurchaseId() {
         return purchaseId;
     }
 
-    public void setPurchaseId(Long purchaseId) {
+    public void setPurchaseId(String purchaseId) {
         this.purchaseId = purchaseId;
     }
 

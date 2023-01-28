@@ -39,9 +39,9 @@ public class PurchaseControllerTest {
     @BeforeEach
     void setup() {
         this.purchaseList = new ArrayList<>();
-        this.purchaseList.add(new Purchase(1L, 1L, 1L, 1, null ));
-        this.purchaseList.add(new Purchase(2L, 2L, 2L, 2, null ));
-        this.purchaseList.add(new Purchase(3L, 3L, 3L, 3, null ));
+        this.purchaseList.add(new Purchase(1L, "09e06ee3-9550-4323-ab6a-65de72e6d39d", 1L, 1, null ));
+        this.purchaseList.add(new Purchase(2L, "09e06ee3-9550-4323-ab6a-65de72e6d39d", 2L, 2, null ));
+        this.purchaseList.add(new Purchase(3L, "09e06ee3-9550-4323-ab6a-65de72e6d39d", 3L, 3, null ));
     }
 
     @Test
