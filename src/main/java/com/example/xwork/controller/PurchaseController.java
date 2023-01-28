@@ -23,7 +23,7 @@ public class PurchaseController {
     @PostMapping("/purchase")
     public ResponseEntity<Purchase> savePurchase(
         @RequestBody Purchase purchase, 
-        @RequestParam("purchaseId") Long purchaseId, 
+        @RequestParam("purchaseId") String purchaseId, 
         @RequestParam("productId") Long productId, 
         @RequestParam("quantity") int quantity
         ) {
@@ -36,7 +36,7 @@ public class PurchaseController {
     }
     
     @GetMapping("/purchase/id")
-    public ResponseEntity<List<Purchase>> getPurchaseByPurchaseId(@RequestParam(required = true) Long purchaseId) {
+    public ResponseEntity<List<Purchase>> getPurchaseByPurchaseId(@RequestParam(required = true) String purchaseId) {
         return new ResponseEntity<>(purchaseService.findPurchaseByPurchase(purchaseId), HttpStatus.OK);
     }
 

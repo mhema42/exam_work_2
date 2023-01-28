@@ -26,7 +26,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
 
     @Override
-    public Purchase createPurchase(Purchase purchase, Long purchaseId, Long productId, int quantity) {
+    public Purchase createPurchase(Purchase purchase, String purchaseId, Long productId, int quantity) {
         Product product = productService.getProduct(productId);
         purchase.setPurchaseId(purchaseId);
         purchase.setProduct(product);
@@ -35,7 +35,7 @@ public class PurchaseServiceImpl implements PurchaseService {
     }
     
     @Override
-    public List<Purchase> findPurchaseByPurchase(Long purchaseId) {
+    public List<Purchase> findPurchaseByPurchase(String purchaseId) {
         return purchaseRepository.filterByPurchaseId(purchaseId);
     }
 

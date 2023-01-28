@@ -7,6 +7,7 @@ const StartPage = () => {
     const [productId, setProductId] = useState("");
     const [purchaseId, setPurchaseId] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [uuid, setUuid] = useState("");
 
     const [purchaseModal, setModal] = useState("hide");
     const [dimProducts, setDimProducts] = useState("no_dim");
@@ -47,6 +48,10 @@ const StartPage = () => {
             .then((result) => {
                 setProduct(result);
             })
+
+        if(uuid === "") {
+            setUuid(crypto.randomUUID());   
+        }
     }
 
     const handleSubmit2 = (e) => {
@@ -101,15 +106,10 @@ const StartPage = () => {
 
                     <form onSubmit={handleSubmit2}>
                         <input
-                            value={purchaseId}
-                            placeholder="purchaseId"
-                            onChange={(e) => setPurchaseId(e.target.value)}
-                        /><br />
-                        <input
                             required
                             value={quantity}
                             placeholder="quantity"
-                            onChange={(e) => setQuantity(e.target.value)}
+                            onChange={(e) => {setQuantity(e.target.value); setPurchaseId(uuid)}}
                         /><br />
                         <button className="buy-button"
                             disabled={!quantity > 0}
