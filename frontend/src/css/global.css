@@ -1,3 +1,7 @@
+body, html {
+    margin: 0px;
+}
+
 .page-container {
     display: flex;
     flex-direction: column;
@@ -21,44 +25,40 @@
     box-shadow: 2px 2px 7px rgb(214, 213, 213);
 }
 
-.product span {
-    display: flex;
-    flex-direction: row;
-    padding-left: 15px;
-}
-
 .product-name {
+    padding: 8px;
     border-bottom: solid;
     border-width: 1px;
     border-color: rgb(185, 21, 21);
     font-weight: bold;
-    padding-top: 15px;
-    padding-bottom: 5px;
 }
 
 .product-price {
     position: relative;
-    float: right;
-    right: 15px;
-    bottom: -55px;
+    right: 12px;
+    bottom: -60px;
+    text-align: right;
+
 }
 
 .product-btn {
     position: relative;
-    bottom: -80px;
-    left: 150px;
+    float: right;
+    right: 10px;
+    bottom: -65px;
+    color: rgb(190, 190, 190);
+    background-color: rgb(35, 74, 229);
     box-shadow: 0px 1px 4px rgb(117, 114, 114);
     border-width: 1px;
     border-color: beige;
     border-radius: 3px;
+    padding: 3px;
 }
 
 .product-btn:hover {
     color: white;
-    background-color: rgb(155, 18, 18);
-    box-shadow: 0px 1px 4px rgb(64, 62, 62);
-    padding-left: 5px;
-    padding-left: 5px;
+    background-color: rgb(192, 14, 14);
+    box-shadow: 0px 1px 8px rgb(32, 31, 31);
 }
 
 .no_dim {
