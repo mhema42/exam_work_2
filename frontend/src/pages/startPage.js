@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../css/startPage.css";
+import "../css/global.css";
 import TopNavBar from "../components/topNavbar";
+import SecTopNavBar from "../components/secNavBar";
 
 const StartPage = () => {
     const [products, setProducts] = useState([])
@@ -8,6 +9,7 @@ const StartPage = () => {
     const [productId, setProductId] = useState("");
     const [purchaseId, setPurchaseId] = useState("");
     const [quantity, setQuantity] = useState("");
+    const [cart, setCart] = useState(0);
     const [uuid, setUuid] = useState("");
 
     //show&hide modals
@@ -55,31 +57,6 @@ const StartPage = () => {
         }
     }
 
-    function Product() {
-        return (
-            <div>
-                <span> Product: {product.name} </span><br />
-                <span> Price: {product.price} </span>
-
-                <form onSubmit={handleSubmit2}>
-                    <input
-                        required
-                        value={quantity}
-                        placeholder="quantity"
-                        onChange={(e) => {setQuantity(e.target.value); setPurchaseId(uuid)}}
-                    /><br />
-                    <button className="buy-button"
-                        disabled={!quantity > 0}
-                        value={productId}
-                        type="submit"
-                        onClick={(e) => {setProduct(e.target.value); hide(setPurchaseModal)}}>
-                        Buy
-                    </button>
-                </form><br />
-            </div>
-        )
-    }
-
     //POST choosen product
     const handleSubmit2 = (e) => {
         e.preventDefault()
@@ -95,17 +72,24 @@ const StartPage = () => {
                 response.json().then(json => {
                 });
                 setQuantity("");
+                setCart(+cart + +quantity);
             }
         });       
     }  
 
     return (
-        <div className="page-container">
-            <div className={dimProducts}></div>
+        <div className="page-container">          
             <div>
                 <TopNavBar />
+                <SecTopNavBar
+                    quantity={cart}
+                    uuid={uuid}
+                />
             </div>
-            <div>
+
+            <div className={dimProducts}></div>
+            
+            <div className="product-list">
                 <h1>All products</h1>
                 {products.sort((b, a) => a.id - b.id).map(p => (           
                     <div key={p.id}>
@@ -122,8 +106,27 @@ const StartPage = () => {
                     </div>
                 ))}
             </div>
+
             <div className={purchaseModal}>
-                <Product />
+                <span> Product: {product.name} </span><br />
+                <span> Price: {product.price} </span>
+
+                <form onSubmit={handleSubmit2}>
+                    <input
+                        autoFocus
+                        required
+                        value={quantity}
+                        placeholder="quantity"
+                        onChange={(e) => {setQuantity(e.target.value)}}
+                    /><br />
+                    <button className="buy-button"
+                        disabled={!quantity > 0}
+                        value={productId}
+                        type="submit"
+                        onClick={(e) => {setPurchaseId(uuid); setProduct(e.target.value); hide(setPurchaseModal)}}>
+                        Buy
+                    </button>
+                </form><br />
                 <CloseBtn />
             </div>
         </div>

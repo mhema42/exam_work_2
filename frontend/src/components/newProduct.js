@@ -1,5 +1,5 @@
 import { React, useState } from 'react'
-import "../css/startPage.css";
+import "../css/global.css";
 
 export default function NewProduct() {
     const [name, setName] = useState('');

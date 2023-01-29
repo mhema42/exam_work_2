@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../css/global.css";
 import NewProduct from "./newProduct"
 import NewCustomer from "./newCustomer"
 
