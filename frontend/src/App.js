@@ -1,5 +1,5 @@
-import NewCustomer from './pages/newCustomer';
-import NewProduct from './pages/newProduct';
+import NewCustomer from './components/newCustomer';
+import NewProduct from './components/newProduct';
 import StartPage from './pages/startPage';
 
 function App() {
