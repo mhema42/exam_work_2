@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/startPage.css";
-import NewProduct from "../components/newProduct";
-import NewCustomer from "../components/newCustomer";
+import TopNavBar from "../components/topNavbar";
 
 const StartPage = () => {
     const [products, setProducts] = useState([])
@@ -13,18 +12,16 @@ const StartPage = () => {
 
     //show&hide modals
     const [purchaseModal, setPurchaseModal] = useState("hide");
-    const [productModal, setProductModal] = useState("hide");
-    const [customerModal, setCustomerModal] = useState("hide");
     const [dimProducts, setDimProducts] = useState("no_dim");
 
     const show = (modal) => {modal("show"); setDimProducts("dim")};
     const hide = (modal) => {modal("hide"); setDimProducts("no_dim")};
 
     function CloseBtn() {
-        return (<button className="close" onClick={() => {hide(setPurchaseModal); hide(setProductModal); hide(setCustomerModal)}}>X</button>)           
+        return (<button className="close" onClick={() => hide(setPurchaseModal)}>X</button>)           
     }
 
-    //present all products on startpage
+    //render all products on startpage
     useEffect(() => {
         fetch("http://localhost:8080/product", {
             method: "GET",
@@ -38,7 +35,7 @@ const StartPage = () => {
             })
     }, [])
 
-    //present choosen product
+    //render choosen product in modal
     const handleSubmit1 = (e) => {
         e.preventDefault()
         
@@ -104,9 +101,13 @@ const StartPage = () => {
 
     return (
         <div className="page-container">
+            <div className={dimProducts}></div>
+            <div>
+                <TopNavBar />
+            </div>
             <div>
                 <h1>All products</h1>
-                {products.map(p => (           
+                {products.sort((b, a) => a.id - b.id).map(p => (           
                     <div key={p.id}>
                         <span> Product: {p.name} </span><br />
                         <span> Price: {p.price} </span>
@@ -120,15 +121,6 @@ const StartPage = () => {
                     </form><br />
                     </div>
                 ))}
-            </div>
-            <div className={dimProducts}></div>
-            <div className={productModal}>
-                <NewProduct />
-                <CloseBtn />
-            </div>
-            <div className={customerModal}>
-                <NewCustomer />
-                <CloseBtn />
             </div>
             <div className={purchaseModal}>
                 <Product />
