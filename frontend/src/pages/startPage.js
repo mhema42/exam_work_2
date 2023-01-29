@@ -90,21 +90,20 @@ const StartPage = () => {
             <div className={dimProducts}></div>
             
             <div className="product-list">
-                <h1>All products</h1>
-                {products.sort((b, a) => a.id - b.id).map(p => (           
-                    <div key={p.id}>
-                        <span> Product: {p.name} </span><br />
-                        <span> Price: {p.price} </span>
-                    <form onSubmit={handleSubmit1}>
-                        <button className="buy-button"
-                            value={p.id}
-                            type="submit"
-                            onClick={(e) => {setProductId(e.target.value); show(setPurchaseModal)}}>
-                            Cart
-                        </button>
-                    </form><br />
+                    {products.sort((b, a) => a.id - b.id).map(p => (           
+                        <div key={p.id} className="product">
+                            <span className="product-name"> {p.name} </span>
+                            <span className="product-price"> $ {p.price} </span>
+                        <form onSubmit={handleSubmit1}>
+                            <button className="product-btn"
+                                value={p.id}
+                                type="submit"
+                                onClick={(e) => {setProductId(e.target.value); show(setPurchaseModal)}}>
+                                Cart
+                            </button>
+                        </form>
                     </div>
-                ))}
+                    ))}
             </div>
 
             <div className={purchaseModal}>
