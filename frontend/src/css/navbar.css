@@ -16,3 +16,49 @@
 .top-navbar button:hover {
     color: white;
 }
+
+.sec-navbar {
+    display: flex;
+    height: 4rem;
+    border-bottom: solid;
+    border-color:  rgb(185, 21, 21);
+}
+
+.cart {
+    position: relative;
+    left: 7.2rem;
+    top: 2.5rem;
+}
+
+img {
+    position: relative;
+    top: 0.5rem;
+    left: 2.2rem;
+    width: 2.7rem;
+    transition: transform 2s;
+    transform: rotate(0deg);
+    transition-delay: 4s;
+}
+
+img:hover {
+    transition: transform 1s;
+    transform: rotate(180deg);
+}
+
+.search {
+    text-indent: 0.5rem;
+    position: relative;
+    top: 0.8rem;
+    left: 5.5rem;
+    width: 29rem;
+    height: 1.5rem;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px black;
+}
+
+.search input {
+    outline: none;
+    border-style: none;
+}
