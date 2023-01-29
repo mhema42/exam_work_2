@@ -51,10 +51,6 @@ const StartPage = () => {
             .then((result) => {
                 setProduct(result);
             })
-
-        if(uuid === "") {
-            setUuid(crypto.randomUUID());   
-        }
     }
 
     //POST choosen product
@@ -73,6 +69,9 @@ const StartPage = () => {
                 });
                 setQuantity("");
                 setCart(+cart + +quantity);
+                if(uuid === "") {
+                    setUuid(crypto.randomUUID());   
+                }
             }
         });       
     }  
@@ -80,11 +79,8 @@ const StartPage = () => {
     return (
         <div className="page-container">          
             <div>
-                <TopNavBar />
-                <SecTopNavBar
-                    quantity={cart}
-                    uuid={uuid}
-                />
+                <TopNavBar uuid={uuid}/>
+                <SecTopNavBar quantity={cart}/>
             </div>
 
             <div className={dimProducts}></div>
@@ -92,14 +88,14 @@ const StartPage = () => {
             <div className="product-list">
                     {products.sort((b, a) => a.id - b.id).map(p => (           
                         <div key={p.id} className="product">
-                            <span className="product-name"> {p.name} </span>
-                            <span className="product-price"> $ {p.price} </span>
+                            <div className="product-name"> {p.name} </div>
+                            <div className="product-price"> $ {p.price} </div>
                         <form onSubmit={handleSubmit1}>
                             <button className="product-btn"
                                 value={p.id}
                                 type="submit"
                                 onClick={(e) => {setProductId(e.target.value); show(setPurchaseModal)}}>
-                                Cart
+                                Add to cart
                             </button>
                         </form>
                     </div>

@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "../css/global.css";
-import NewProduct from "./newProduct"
-import NewCustomer from "./newCustomer"
+import "../css/navbar.css";
+import NewProduct from "./newProduct";
+import NewCustomer from "./newCustomer";
 
-export default function TopNavBar() {
+export default function TopNavBar(props) {
     const [productModal, setProductModal] = useState("hide");
     const [customerModal, setCustomerModal] = useState("hide");
     const [dimProducts, setDimProducts] = useState("no_dim");
@@ -18,13 +19,14 @@ export default function TopNavBar() {
     return (       
         <div className="top-navbar">
             <div className={dimProducts}></div>
+            <span>Order id ({props.uuid})</span>
             <div className={productModal}>
-                    <NewProduct />
-                    <CloseBtn />
-                </div>
-                <div className={customerModal}>
-                    <NewCustomer />
-                    <CloseBtn />
+                <NewProduct />
+                <CloseBtn />
+            </div>
+            <div className={customerModal}>
+                <NewCustomer />
+                <CloseBtn />
             </div>
             <button className="new-product"
                         type="submit"
