@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/startPage.css";
+import NewProduct from "./newProduct";
 
 const StartPage = () => {
     const [products, setProducts] = useState([])
@@ -10,17 +11,18 @@ const StartPage = () => {
     const [uuid, setUuid] = useState("");
 
     const [purchaseModal, setModal] = useState("hide");
+    const [productModal, setModal1] = useState("hide");
     const [dimProducts, setDimProducts] = useState("no_dim");
 
-    const toggleModal = () => {
-        if (purchaseModal === "show" || dimProducts === "dim") {
-         setModal("hide")
+    const show = (s) => {
+        s("show")
+        setDimProducts("dim")
+    };
+
+    const hide = (s) => {
+         s("hide")
          setDimProducts("no_dim")
-        } else {
-            setModal("show")
-            setDimProducts("dim")
-            }
-    };  
+    };
 
     useEffect(() => {
         fetch("http://localhost:8080/product", {
@@ -76,8 +78,24 @@ const StartPage = () => {
         setQuantity("");
     }
 
+    function Close() {
+        return (
+            <button 
+                className="close"
+                type="close"
+                onClick={() => {hide(setModal); hide(setModal1)}}>
+                X
+            </button>
+        )           
+    }
+
     return (
         <div>
+            <div className={productModal}>
+                <NewProduct />
+                <Close />
+            </div>
+
             <div className="page-container">
 
                 <div className={dimProducts}></div>
@@ -92,7 +110,7 @@ const StartPage = () => {
                             <button className="buy-button"
                                 value={p.id}
                                 type="submit"
-                                onClick={(e) => {reset(); setProductId(e.target.value); toggleModal()}}>
+                                onClick={(e) => {reset(); setProductId(e.target.value); show(setModal)}}>
                                 Cart
                             </button>
                         </form><br />
@@ -101,6 +119,7 @@ const StartPage = () => {
                 </div>
                
                 <div className={purchaseModal}>
+                    <Close />
                     <span> Product: {product.name} </span><br />
                     <span> Price: {product.price} </span>
 
@@ -115,17 +134,10 @@ const StartPage = () => {
                             disabled={!quantity > 0}
                             value={productId}
                             type="submit"
-                            onClick={(e) => {setProduct(e.target.value); toggleModal()}}>
+                            onClick={(e) => {setProduct(e.target.value); hide(setModal)}}>
                             Buy
                         </button>
                     </form><br />
-
-                    <button 
-                        className="close"
-                        type="close"
-                        onClick={() => toggleModal()}>
-                        X
-                    </button>
                 </div>
             </div>
         </div>
