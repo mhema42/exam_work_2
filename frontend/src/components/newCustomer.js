@@ -57,7 +57,11 @@ export default function NewCustomer() {
                     placeholder="email of the customer"
                     onChange={(e) => setEmail(e.target.value)}
                 /><br />
-                <button type="submit">Submitt customer</button>
+                <button
+                    className="red-button"
+                    type="submit">
+                    Submitt customer
+                </button>
             </form>
             <p className="message">{message}</p>
         </div>

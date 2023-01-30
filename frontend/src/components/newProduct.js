@@ -1,5 +1,6 @@
 import { React, useState } from 'react'
 import "../css/global.css";
+import StartPage from '../pages/startPage';
 
 export default function NewProduct() {
     const [name, setName] = useState('');
@@ -22,10 +23,11 @@ export default function NewProduct() {
             }
         });
         SetMessage(name + " is added as a new product")
+        StartPage(this.forceUpdate());
     }
 
     return (
-        <div className='Page-container'>
+        <div className='modal'>
             <form onSubmit={handleSubmit}>
                 <input
                     className='name'
@@ -41,9 +43,11 @@ export default function NewProduct() {
                     placeholder="Price of the product"
                     onChange={(e) => setPrice(e.target.value)}
                 /><br />
-                <button 
+                <button
+                    className="red-button"
                     type="submit"
-                    >Submitt product</button>
+                    >Submitt product
+                </button>
             </form>
             <p className="message">{message}</p>
         </div>

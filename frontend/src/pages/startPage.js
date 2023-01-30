@@ -16,11 +16,11 @@ const StartPage = () => {
     const [purchaseModal, setPurchaseModal] = useState("hide");
     const [dimProducts, setDimProducts] = useState("no_dim");
 
-    const show = (modal) => {modal("show"); setDimProducts("dim")};
+    const show = (modal) => {modal("show modal"); setDimProducts("dim")};
     const hide = (modal) => {modal("hide"); setDimProducts("no_dim")};
 
     function CloseBtn() {
-        return (<button className="close" onClick={() => hide(setPurchaseModal)}>X</button>)           
+        return (<button className="close-btn" onClick={() => hide(setPurchaseModal)}>X</button>)           
     }
 
     //render all products on startpage
@@ -90,39 +90,43 @@ const StartPage = () => {
                         <div key={p.id} className="product">
                             <div className="product-name"> {p.name} </div>
                             <div className="product-price"> $ {p.price} </div>
-                        <form onSubmit={handleSubmit1}>
-                            <button className="product-btn"
-                                value={p.id}
-                                type="submit"
-                                onClick={(e) => {setProductId(e.target.value); show(setPurchaseModal)}}>
-                                Add to cart
-                            </button>
-                        </form>
-                    </div>
+                            <form onSubmit={handleSubmit1}>
+                                <button className="red-button"
+                                    value={p.id}
+                                    type="submit"
+                                    onClick={(e) => {setProductId(e.target.value); show(setPurchaseModal)}}>
+                                    Add to cart
+                                </button>
+                            </form>
+                        </div>
                     ))}
             </div>
 
             <div className={purchaseModal}>
-                <span> Product: {product.name} </span><br />
-                <span> Price: {product.price} </span>
+                <div className="modal">
+                    <div className="modal-txt">
+                        <span> {product.name} </span><br />
+                        <span> Price: {product.price} </span>
+                    </div>
 
-                <form onSubmit={handleSubmit2}>
-                    <input
-                        autoFocus
-                        required
-                        value={quantity}
-                        placeholder="quantity"
-                        onChange={(e) => {setQuantity(e.target.value)}}
-                    /><br />
-                    <button className="buy-button"
-                        disabled={!quantity > 0}
-                        value={productId}
-                        type="submit"
-                        onClick={(e) => {setPurchaseId(uuid); setProduct(e.target.value); hide(setPurchaseModal)}}>
-                        Buy
-                    </button>
-                </form><br />
-                <CloseBtn />
+                    <form onSubmit={handleSubmit2}>
+                        <input
+                            autoFocus
+                            required
+                            value={quantity}
+                            placeholder="quantity"
+                            onChange={(e) => {setQuantity(e.target.value)}}
+                        /><br />
+                        <button className="red-button modal-btn" 
+                            disabled={!quantity > 0}
+                            value={productId}
+                            type="submit"
+                            onClick={(e) => {setPurchaseId(uuid); setProduct(e.target.value); hide(setPurchaseModal)}}>
+                            Add to cart
+                        </button>
+                    </form><br />
+                    <CloseBtn />
+                </div>
             </div>
         </div>
     );
