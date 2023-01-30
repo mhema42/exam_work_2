@@ -13,7 +13,7 @@ export default function TopNavBar(props) {
     const hide = (modal) => {modal("hide"); setDimProducts("no_dim")};
 
     function CloseBtn() {
-        return (<button className="close" onClick={() => {hide(setProductModal); hide(setCustomerModal)}}>X</button>)           
+        return (<button className="close-btn" onClick={() => {hide(setProductModal); hide(setCustomerModal)}}>X</button>)           
     }
 
     return (       
@@ -22,18 +22,18 @@ export default function TopNavBar(props) {
             <span>Order id ({props.uuid})</span>
             <div className={productModal}>
                 <NewProduct />
-                <CloseBtn />
+                <CloseBtn className="close-btn"/>
             </div>
             <div className={customerModal}>
                 <NewCustomer />
-                <CloseBtn />
+                <CloseBtn className="close-btn"/>
             </div>
-            <button className="new-product"
+            <button className="new-btn"
                         type="submit"
                         onClick={(e) => {show(setProductModal)}}>
                         Add products
             </button>
-            <button className="new-customer"
+            <button className="new-btn"
                         type="submit"
                         onClick={(e) => {show(setCustomerModal)}}>
                         Add customers

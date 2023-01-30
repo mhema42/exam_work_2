@@ -6,14 +6,14 @@
     background-color: black;
 }
 
-.top-navbar button {
+.new-btn {
     font-size: small;
     float: right;
     color: rgb(183, 182, 182);
     background-color: black;
 }
 
-.top-navbar button:hover {
+.new-btn:hover {
     color: white;
 }
 
